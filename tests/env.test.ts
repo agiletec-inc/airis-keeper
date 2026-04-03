@@ -49,7 +49,7 @@ describe('env', () => {
     it('returns errors when SUPABASE_SERVICE_ROLE_KEY is missing', async () => {
       process.env.VAULT_ROOT_KEY = 'a'.repeat(32)
       process.env.SUPABASE_URL = 'https://supabase.example.com'
-      delete process.env.SUPABASE_SERVICE_ROLE_KEY
+      process.env.SUPABASE_SERVICE_ROLE_KEY = undefined
 
       const { validateEnv } = await import('../src/env.js')
       const result = validateEnv()
@@ -60,7 +60,7 @@ describe('env', () => {
       process.env.VAULT_ROOT_KEY = 'a'.repeat(32)
       process.env.SUPABASE_URL = 'https://supabase.example.com'
       process.env.SUPABASE_SERVICE_ROLE_KEY = 'key'
-      delete process.env.OPENAI_ADMIN_API_KEY
+      process.env.OPENAI_ADMIN_API_KEY = undefined
 
       const { validateEnv } = await import('../src/env.js')
       const result = validateEnv()

@@ -95,7 +95,6 @@ describe('vault store', () => {
         maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
       }
       chain.eq.mockReturnValue(chain)
-
       ;(db.from as ReturnType<typeof vi.fn>).mockReturnValue({
         select: vi.fn().mockReturnValue(chain),
       })
@@ -119,7 +118,6 @@ describe('vault store', () => {
         order: vi.fn().mockResolvedValue({ data: [], error: null }),
       }
       chain.eq.mockReturnValue(chain)
-
       ;(db.from as ReturnType<typeof vi.fn>).mockReturnValue({
         select: vi.fn().mockReturnValue(chain),
       })
@@ -148,7 +146,6 @@ describe('vault store', () => {
         }
         return chain
       })
-
       ;(db.from as ReturnType<typeof vi.fn>).mockReturnValue({
         delete: vi.fn().mockReturnValue(chain),
       })

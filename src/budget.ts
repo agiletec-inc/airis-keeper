@@ -41,7 +41,7 @@ export async function setBudget(params: {
       monthly_limit_usd: monthlyLimitUsd,
       alert_threshold_percent: alertThresholdPercent,
     },
-    { onConflict: 'organization_id,customer_id' }
+    { onConflict: 'organization_id,customer_id' },
   )
 
   if (error) throw new Error(`Failed to set budget: ${error.message}`)
@@ -112,7 +112,9 @@ export async function getUsage(params: {
   const db = getDb()
 
   const periodStart = `${period}-01T00:00:00Z`
-  const [year, month] = period.split('-').map(Number)
+  const parts = period.split('-').map(Number)
+  const year = parts[0] ?? 0
+  const month = parts[1] ?? 0
   const nextMonth =
     month === 12 ? `${year + 1}-01` : `${year}-${String(month + 1).padStart(2, '0')}`
   const periodEnd = `${nextMonth}-01T00:00:00Z`

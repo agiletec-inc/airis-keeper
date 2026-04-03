@@ -3,7 +3,7 @@
  * Uses service role key for server-side operations.
  */
 
-import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import { type SupabaseClient, createClient } from '@supabase/supabase-js'
 import { getEnv } from './env.js'
 
 let client: SupabaseClient | null = null

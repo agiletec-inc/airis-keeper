@@ -73,7 +73,7 @@ export class OpenAiProvisioner implements Provisioner {
       {
         method: 'POST',
         body: JSON.stringify({ name: saName }),
-      }
+      },
     )
 
     // 2. Create API key for the service account
@@ -82,7 +82,7 @@ export class OpenAiProvisioner implements Provisioner {
       {
         method: 'POST',
         body: JSON.stringify({ name }),
-      }
+      },
     )
 
     // 3. Encrypt and store the raw key in vault
@@ -152,7 +152,7 @@ export class OpenAiProvisioner implements Provisioner {
     if (keyRecord.api_key_external_id) {
       await adminFetch(
         `/projects/${this.projectId}/service_accounts/${externalId}/api_keys/${keyRecord.api_key_external_id}`,
-        { method: 'DELETE' }
+        { method: 'DELETE' },
       )
     }
 

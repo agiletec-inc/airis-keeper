@@ -61,11 +61,11 @@ export function registerSecretCommands(program: Command, getOrgId: () => string)
 
       process.stdout.write(`${'KEY'.padEnd(30)} ${'ENV'.padEnd(5)} ${'VER'.padEnd(5)} FOLDER\n`)
       process.stdout.write(
-        `${'─'.repeat(30)} ${'─'.repeat(5)} ${'─'.repeat(5)} ${'─'.repeat(15)}\n`
+        `${'─'.repeat(30)} ${'─'.repeat(5)} ${'─'.repeat(5)} ${'─'.repeat(15)}\n`,
       )
       for (const s of secrets) {
         process.stdout.write(
-          `${s.key.padEnd(30)} ${s.environment.padEnd(5)} v${String(s.version).padEnd(4)} ${s.folder ?? ''}\n`
+          `${s.key.padEnd(30)} ${s.environment.padEnd(5)} v${String(s.version).padEnd(4)} ${s.folder ?? ''}\n`,
         )
       }
     })

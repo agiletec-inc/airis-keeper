@@ -1,6 +1,6 @@
 /**
  * Secret Injector — runs a child process with vault secrets injected as env vars.
- * Equivalent to `infisical run -- <command>`.
+ * Equivalent to `keeper run -- <command>`.
  */
 
 import { spawn } from 'node:child_process'
@@ -26,7 +26,8 @@ export async function injectAndRun(options: InjectOptions): Promise<number> {
 
   const secrets = await getAllSecrets({ organizationId, environment })
 
-  const [cmd, ...args] = command
+  const cmd = command[0] as string
+  const args = command.slice(1)
   const child = spawn(cmd, args, {
     stdio: 'inherit',
     env: {
@@ -36,7 +37,7 @@ export async function injectAndRun(options: InjectOptions): Promise<number> {
   })
 
   return new Promise<number>((resolve, reject) => {
-    child.on('close', (code) => resolve(code ?? 0))
+    child.on('close', (code: number | null) => resolve(code ?? 0))
     child.on('error', reject)
   })
 }

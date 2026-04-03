@@ -22,7 +22,7 @@ export function registerBudgetCommands(program: Command, getOrgId: () => string)
         alertThresholdPercent: Number.parseInt(options.threshold),
       })
       process.stdout.write(
-        `Budget set: ${options.customer} → $${options.limit}/month (alert at ${options.threshold}%)\n`
+        `Budget set: ${options.customer} → $${options.limit}/month (alert at ${options.threshold}%)\n`,
       )
     })
 

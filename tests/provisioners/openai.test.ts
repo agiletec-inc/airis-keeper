@@ -113,7 +113,7 @@ describe('OpenAiProvisioner', () => {
           customerId: 'acme-corp',
           name: 'Test',
           organizationId: 'org-1',
-        })
+        }),
       ).rejects.toThrow('OpenAI Admin API error 403')
     })
   })

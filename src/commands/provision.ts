@@ -23,7 +23,7 @@ export function registerProvisionCommands(program: Command, getOrgId: () => stri
         organizationId: getOrgId(),
       })
 
-      process.stdout.write(`Key provisioned successfully:\n`)
+      process.stdout.write('Key provisioned successfully:\n')
       process.stdout.write(`  Provider:    ${result.provider}\n`)
       process.stdout.write(`  Customer:    ${result.customerId}\n`)
       process.stdout.write(`  External ID: ${result.externalId}\n`)
@@ -31,7 +31,7 @@ export function registerProvisionCommands(program: Command, getOrgId: () => stri
       if (result.rawKey) {
         process.stdout.write(`  Raw Key:     ${result.rawKey}\n`)
         process.stdout.write(
-          `\n  (This is the only time the raw key is shown. It's stored encrypted in the vault.)\n`
+          `\n  (This is the only time the raw key is shown. It's stored encrypted in the vault.)\n`,
         )
       }
     })
@@ -45,7 +45,7 @@ export function registerProvisionCommands(program: Command, getOrgId: () => stri
       const providerNames = options.provider ? [options.provider] : ['openai']
 
       for (const providerName of providerNames) {
-        let provisioner
+        let provisioner: ReturnType<typeof getProvider> | undefined
         try {
           provisioner = getProvider(providerName)
         } catch {
@@ -61,13 +61,13 @@ export function registerProvisionCommands(program: Command, getOrgId: () => stri
 
         process.stdout.write(`\n${providerName.toUpperCase()} Keys:\n`)
         process.stdout.write(
-          `${'CUSTOMER'.padEnd(20)} ${'NAME'.padEnd(20)} ${'PREFIX'.padEnd(25)} ${'STATUS'.padEnd(10)} CREATED\n`
+          `${'CUSTOMER'.padEnd(20)} ${'NAME'.padEnd(20)} ${'PREFIX'.padEnd(25)} ${'STATUS'.padEnd(10)} CREATED\n`,
         )
         process.stdout.write(`${'─'.repeat(95)}\n`)
 
         for (const key of keys) {
           process.stdout.write(
-            `${key.customerId.padEnd(20)} ${key.name.padEnd(20)} ${key.keyPrefix.padEnd(25)} ${key.status.padEnd(10)} ${key.createdAt.slice(0, 10)}\n`
+            `${key.customerId.padEnd(20)} ${key.name.padEnd(20)} ${key.keyPrefix.padEnd(25)} ${key.status.padEnd(10)} ${key.createdAt.slice(0, 10)}\n`,
           )
         }
       }
@@ -97,7 +97,7 @@ export function registerProvisionCommands(program: Command, getOrgId: () => stri
         organizationId: getOrgId(),
       })
 
-      process.stdout.write(`Key rotated:\n`)
+      process.stdout.write('Key rotated:\n')
       process.stdout.write(`  Old key revoked: ${externalId}\n`)
       process.stdout.write(`  New External ID: ${result.externalId}\n`)
       process.stdout.write(`  New Key Prefix:  ${result.keyPrefix}\n`)
