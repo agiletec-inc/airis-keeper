@@ -1,7 +1,7 @@
 name: CI
 
-# Org reusable CI caller — logic lives in agiletec-inc/.github reusables.
-# Required checks: "secret-scan / scan" and "ci / ci".
+# Org reusable CI caller — opinionated baseline (lint + typecheck + test + build + audit).
+# Logic lives in agiletec-inc/.github reusables. Required checks: "secret-scan / scan", "ci / ci".
 on:
   pull_request:
   merge_group:
@@ -17,4 +17,3 @@ jobs:
     uses: agiletec-inc/.github/.github/workflows/node-pnpm-ci.yml@main
     with:
       node-version: '20'
-      run-command: npm run lint && npm run typecheck && npm test
