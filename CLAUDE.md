@@ -13,7 +13,7 @@ Note: this is a plain npm/TypeScript package — it does **not** use `manifest.t
 ```bash
 npm run lint          # biome check (also: lint:fix to auto-fix)
 npm run typecheck     # tsc --noEmit
-npm test              # vitest run (CI runs lint + typecheck + test, in that order)
+npm test              # vitest run (CI runs lint + typecheck + test + build + audit, in that order)
 npm run build         # tsup → dist/ (cli.js + index.js, ESM, with #!/usr/bin/env node banner)
 npm run dev           # tsx watch src/cli.ts
 
