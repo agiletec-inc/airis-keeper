@@ -12,8 +12,8 @@ concurrency:
 
 jobs:
   secret-scan:
-    uses: agiletec-inc/.github/.github/workflows/secret-scan.yml@main
+    uses: agiletec-inc/github-actions/.github/workflows/secret-scan.yml@main
   ci:
-    uses: agiletec-inc/.github/.github/workflows/node-pnpm-ci.yml@main
+    uses: agiletec-inc/github-actions/.github/workflows/node-pnpm-ci.yml@main
     with:
       node-version: '20'
