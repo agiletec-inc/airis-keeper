@@ -71,6 +71,9 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+    defaults:
+      run:
+        shell: bash
     env:
       PM: ''
     steps:
